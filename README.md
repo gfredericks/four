@@ -22,7 +22,7 @@ If anybody has need for more features, I imagine adding:
 ## Usage
 
 ```clojure
-(require [four.stateless :as rnd])
+(require '[four.stateless :as rnd])
 
 (let [r (rnd/java-random 42)]
   (rnd/next-long r))
