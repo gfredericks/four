@@ -59,3 +59,34 @@
 ;; 	low-severe	 3 (5.0000 %)
 ;; 	low-mild	 1 (1.6667 %)
 ;;  Variance from outliers : 30.3478 % Variance is moderately inflated by outliers
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Multithreaded Comparison
+
+
+(defn bit-xor-10000000-longs
+  []
+  (loop [i 0, x 0]
+    (if (= 10000000 i)
+      x
+      (recur (inc i) (bit-xor x (rand-int 2147483647))))))
+
+(time
+ (let [fs (doall (repeatedly 20 #(future (bit-xor-10000000-longs))))]
+   (reduce bit-xor (map deref fs))))
+;; 69169.7653 msecs
+
+(defn bit-xor-10000000-longs-four
+  []
+  (loop [i 0, x 0, r (rnd/java-random 42)]
+    (if (= 10000000 i)
+      x
+      (let [[^long x' r'] (rnd/next-long r)]
+        (recur (inc i) (bit-xor x x') r')))))
+
+(time
+ (let [fs (doall (repeatedly 20 #(future (bit-xor-10000000-longs-four))))]
+   (reduce bit-xor (map deref fs))))
+;; 15507.767552 msecs
