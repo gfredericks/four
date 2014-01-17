@@ -1,4 +1,4 @@
-(defproject com.gfredericks/four "0.1.0"
+(defproject com.gfredericks/four "0.2.0"
   :description "Random numbers in Clojure"
   :url "https://github.com/fredericksgary/four"
   :license {:name "Eclipse Public License"

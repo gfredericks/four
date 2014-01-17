@@ -1,23 +1,23 @@
 # [four](http://xkcd.com/221/)
 
-Four is a Clojure library for generating random numbers.
+Four is a Clojure library for generating random numbers, with both
+stateful and stateless generators.
 
-The only implementation so far is immutable (in contrast to
-java.util.Random which all Clojure code I've seen uses), can only
-generate Longs, and tries (unsuccessfully?) to do so with the same
-algorithm that java.util.Random uses.
+## Stateless
 
-If anybody has need for more features, I imagine adding:
+Stateless generators are immutable (in contrast to java.util.Random
+which all Clojure code I've seen uses), and the only one I've made so
+far can only generate Longs, and tries (unsuccessfully?) to do so with
+the same algorithm that java.util.Random uses.
 
-- Different types
-- More implementations
-- A `four.stateful` namespace that includes a dynamic *rand* var
-  that could be used from other libraries (since clojure.core lacks
-  this)
+## Stateful
+
+So far this is just the `four.stateful` namespace with a `*rand*` dynamic
+var and equivalents of `rand`, `rand-int`, `rand-nth`, and `shuffle`.
 
 ## Obtainage
 
-`[com.gfredericks/four "0.1.0"]`
+`[com.gfredericks/four "0.2.0"]`
 
 ## Usage
 
