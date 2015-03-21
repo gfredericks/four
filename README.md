@@ -15,7 +15,7 @@ the same algorithm that java.util.Random uses.
 So far this is just the `four.stateful` namespace with a `*rand*` dynamic
 var and equivalents of `rand`, `rand-int`, `rand-nth`, and `shuffle`.
 
-## Obtainage
+## Obtention
 
 `[com.gfredericks/four "0.2.0"]`
 
